@@ -1,6 +1,6 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
-from tkinter import ttk
+from tkinter import *
 import tkinter 
 
 
@@ -26,6 +26,7 @@ def recibir():
                 print(msg)
 
         except OSError:  # Posiblemente el cliente haya abandonado el chat
+            principal.quit()    
             break
 
 def set_name():  # El evento es pasado por binders
@@ -54,11 +55,16 @@ def fecha():
     # Función que se manda a llamar cuando la ventana está cerrada
     mensaje.set("quit")
     send()
-    
-window = tkinter.Tk()
-window.title("Chat")
-window.configure(bg="#ffffff")
-window.geometry('760x450')
+
+#Ventana principal
+principal = Tk()
+principal.geometry("{0}x{1}+0+0".format(principal.winfo_screenwidth()-3, principal.winfo_screenheight()-3))
+#Parte gráfica 
+window = Frame(principal, bg="white", width=500, height=300)
+window.place(x=510, y=280)
+#window.title("Chat")
+#window.configure(bg="#ffffff")
+#window.geometry('760x450')
 #window.geometry("{0}x{1}+0+0".format(
             #window.winfo_screenwidth()-3, window.winfo_screenheight()-3))  # Tamaño y posicionamiento
 
@@ -71,8 +77,8 @@ mensaje = tkinter.StringVar()
 scrollbar = tkinter.Scrollbar(campo_conversacion)
 scrollbar2 = tkinter.Scrollbar(campo_conversacion)
 
-window.combo = ttk.Combobox(window)
-window.combo.place(x=80, y=150)
+#window.combo = ttk.Combobox(window)
+#window.combo.place(x=80, y=150)
 l_remitente = tkinter.Label(window, text="   Remitente:", font="Ubuntu 14", width=11, height=2, bg="#ffffff")
 l_destinatario = tkinter.Label(window, text=" Destinatario:", font="Ubuntu 14", width=11, height=2, bg="#ffffff")
 l_asunto = tkinter.Label(window, text="       Asunto:", font="Ubuntu 14", width=11, height=2, bg="#ffffff")
@@ -83,13 +89,13 @@ l_conversacion = tkinter.Label(window, text=" Conversación: ", font="Ubuntu 14"
 msg_list = tkinter.Listbox(window, height=11, width=38, font="Ubuntu 12 bold", fg="#483659", border=2,
                            yscrollcommand=scrollbar.set)
 
-e_remitente = tkinter.Entry(window, font="Ubuntu 12 bold", fg="#483659", textvariable=remitente)
+e_remitente = tkinter.Entry(window, font="Fedora 12 bold", fg="#483659", textvariable=remitente)
 e_remitente.bind("<Return>", )
-e_destinatario = tkinter.Entry(window, font="Ubuntu 12 bold", fg="#483659", textvariable=destinatario, show='false')
+e_destinatario = tkinter.Entry(window, font="Fedora 12 bold", fg="#483659", textvariable=destinatario)
 e_destinatario.bind("<Return>", )
 e_asunto = tkinter.Entry(window, font="verdana 12 bold", fg="#483659", textvariable=asunto)
 e_asunto.bind("<Return>", )
-e_mensaje = tkinter.Entry(window, font="Ubuntu 12 bold", fg="#483659", width=65, textvariable=mensaje)
+e_mensaje = tkinter.Entry(window, font="Fedora 12 bold", fg="#483659", width=65, textvariable=mensaje)
 e_mensaje.bind("<Return>", )
 
 b_enviar_remitente = tkinter.Button(window, text="    Enviar    ", font="Ubuntu 14 bold", height=1, border=3,
@@ -134,4 +140,5 @@ receive_thread = Thread(target=recibir)
 receive_thread.start()
 
 # Ejecución de la interfaz
-window.mainloop()
+#window.mainloop()
+principal.mainloop()
