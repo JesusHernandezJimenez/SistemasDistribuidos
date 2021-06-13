@@ -1,7 +1,8 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from tkinter import *
-import tkinter 
+import tkinter
+from typing import Sized 
 
 
 def recibir():
@@ -26,7 +27,7 @@ def recibir():
                 print(msg)
 
         except OSError:  # Posiblemente el cliente haya abandonado el chat
-            principal.quit()    
+            principal.destroy()    
             break
 
 def set_name():  # El evento es pasado por binders
@@ -49,19 +50,30 @@ def exit():
     msg = "quit"
     client_socket.send(bytes(msg, "utf8"))
     client_socket.close()
-    window.quit()
+    window.destroy()
+    principal.destroy()
 
 def fecha():
     # Función que se manda a llamar cuando la ventana está cerrada
     mensaje.set("quit")
     send()
 
+def mostrarChat():
+    window.place(x=0, y=0)
 #Ventana principal
 principal = Tk()
 principal.geometry("{0}x{1}+0+0".format(principal.winfo_screenwidth()-3, principal.winfo_screenheight()-3))
 #Parte gráfica 
+
+
+
+
+
 window = Frame(principal, bg="white", width=500, height=300)
-window.place(x=510, y=280)
+window.place(x=0, y=0)
+chat_btn = PhotoImage(file='Modulo Chat/img/chat2.png')
+chat_button = Button(principal, image=chat_btn, borderwidth=0, command=mostrarChat)
+#window.place(x=510, y=280)
 #window.title("Chat")
 #window.configure(bg="#ffffff")
 #window.geometry('760x450')
@@ -98,12 +110,12 @@ e_asunto.bind("<Return>", )
 e_mensaje = tkinter.Entry(window, font="Fedora 12 bold", fg="#483659", width=65, textvariable=mensaje)
 e_mensaje.bind("<Return>", )
 
-b_enviar_remitente = tkinter.Button(window, text="    Enviar    ", font="Ubuntu 14 bold", height=1, border=3,
+b_enviar_remitente = tkinter.Button(window, text="    Enviar    ", font="Fedora 12 bold", height=1, border=3,
                                     relief="groove", fg="#483659", command=set_name)
-b_enviar = tkinter.Button(window, text="Enviar Mensaje", font="Ubuntu 14 bold", height=1, border=3,
+b_enviar = tkinter.Button(window, text="Enviar Mensaje", font="Fedora 12 bold", height=1, border=3,
                           relief="groove", fg="#483659", command=send)
-b_salir = tkinter.Button(window, text="Exit", font="Ubuntu 14 bold", fg="red", border=3, relief='groove',
-                        command=exit)
+b_salir = tkinter.Button(window, text="Salir", font="Fedora 12 bold", fg="red", border=3, relief='groove',
+                        command=window.place_forget)
 
 scrollbar.grid()
 msg_list.grid(row=2, column=3)
@@ -123,6 +135,7 @@ e_mensaje.grid(row=4, column=2, columnspan=6)
 b_enviar.grid(row=5, column=2, sticky="n")
 b_enviar_remitente.grid(row=2, column=2, sticky="n")
 b_salir.grid(row=5, column=3)
+chat_button.pack(pady=20, side=BOTTOM)
 
 HOST = "localhost"
 PORT = 50000
