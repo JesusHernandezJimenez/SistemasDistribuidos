@@ -12,9 +12,12 @@ Frame_3 = Frame(root)
 #INICIO DE LA INTERFAZ GRAFICA
 
 def delete():
-    frame_login.winfo_children()
+    frame_login.forget()
+    for widgets in frame_login.winfo_children():
+        widgets.destroy()
+    #frame_login.winfo_children()
     frame_login.destroy()
-    frame_registro.destroy()
+    #frame_registro.destroy()
     init()
 
 def loginFrame(root):
@@ -24,11 +27,10 @@ def loginFrame(root):
     windows.geometry("400x800")
 
 
-def joder(user, password):
+def login_frame_validate(user, password):
     if user == 'admin' and password == 'admin':
         print("Logeado con exito")
-        delete()
-
+        return True
 def botton_1_cambiar():
     Frame_3.forget()
     Frame_2.pack(side="left", expand=True, fill="x")
@@ -62,7 +64,7 @@ def init():
     button_2 = Button(Frame_1, text="Boton1", font=("Verdana", 12), bg="#1E262C", fg="white",
                       anchor=NW, command=botton_2_cambiar).place(x=0, y=34, width=300, height=35)
 
-frame_login = login.Login(master=root, delete=delete, joder=joder)
-frame_registro = registro.Registro(master=root)
+frame_login = login.Login(master=root, delete=delete, login_frame_validate = login_frame_validate)
+#frame_registro = registro.Registro(master=root)
 
 root.mainloop()

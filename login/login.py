@@ -3,17 +3,15 @@ from PIL import ImageTk, Image
 
 class Login(Frame):
     #Creacion del frame, recibe root=La ventada creada, delete = funcion para eliminar el frame, joder = funcion de prueba
-    def __init__(self, master=None, delete=None,joder=None):
+    def __init__(self, master=None, delete=None, login_frame_validate = None):
         super().__init__(master)
-        self.joder = joder
         self.delete = delete
         self.master = master
         self.config(height=600, width=350, bg="#1E262C")
         self.pack(ipadx=50, ipady=10, expand=True)
-        self.create_login(master)
+        self.create_login(master,login_frame_validate)
  
-    def create_login(self,Frame):
-
+    def create_login(self,Frame,login_frame_validate):
         entry_user_text = StringVar()
         entr_user_password = StringVar()
         Label(Frame, text="LOGIN", font=("Impact", 20), fg="white",
@@ -24,12 +22,16 @@ class Login(Frame):
         Label(Frame, text="Contraseña", font=("Impact", 14), fg="white",bg="#1E262C").place(anchor='n', rely=0.45, relx=0.5)
         entry_password = Entry(Frame, textvariable=entr_user_password,show='*', font=("Impact", 12), fg="black", bg="white").place(anchor='n', rely=0.50, relx=0.5)
 
-        button_ingresar = Button(Frame, text="Ingresar", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=lambda: self.joder(entry_user_text.get(),entr_user_password.get())).place(anchor='n', rely=0.7, relx=0.5, width=300, height=35)      
+        button_ingresar = Button(Frame, text="Ingresar", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,
+         command=lambda:  self.login_validate(entry_user_text.get(),entr_user_password.get(),login_frame_validate)).place(anchor='n', rely=0.7, relx=0.5, width=300, height=35)      
+        #button_ingresar = Button(Frame, text="Ingresar", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=lambda:  login_frame_validate(entry_user_text.get(),entr_user_password.get())).place(anchor='n', rely=0.7, relx=0.5, width=300, height=35)      
         button_registro = Button(Frame, text="Crear cuenta", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=self.delete).place(anchor='n', rely=0.8, relx=0.5, width=300, height=35)
         
-        button_prueba = Button(Frame, text="prueba", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=self.registro).place(anchor='n', rely=0.9, relx=0.5, width=300, height=35)
+        #button_prueba = Button(Frame, text="prueba", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=self.registro).place(anchor='n', rely=0.8, relx=0.5, width=300, height=35)
 
-
+    def login_validate(user,password,validate_frame):
+        if validate_frame(user,password) == True:
+            print("Validado, neta creeme")
     def create_login_images():
         img_user = Image.open('proyecto/img/user.png')
         #img_user = img_user.resize((60, 71), Image.ANTIALIAS)
