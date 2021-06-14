@@ -58,21 +58,20 @@ def fecha():
     mensaje.set("quit")
     send()
 
+#Muestra es frame del chat
 def mostrarChat():
     window.place(x=0, y=0)
 #Ventana principal
 principal = Tk()
 principal.geometry("{0}x{1}+0+0".format(principal.winfo_screenwidth()-3, principal.winfo_screenheight()-3))
+principal.configure(bg='#eff2fe')
 #Parte gráfica 
 
-
-
-
-
-window = Frame(principal, bg="white", width=500, height=300)
-window.place(x=0, y=0)
+window = Frame(principal, bg="white", width=500, height=300, bd=4,highlightbackground='black', highlightthickness=2)
+window.configure(bg='#eff2fe')
+#window.place(x=0, y=0)
 chat_btn = PhotoImage(file='Modulo Chat/img/chat2.png')
-chat_button = Button(principal, image=chat_btn, borderwidth=0, command=mostrarChat)
+chat_button = Button(principal, image=chat_btn, borderwidth=0, command=mostrarChat, bg='#eff2fe')
 #window.place(x=510, y=280)
 #window.title("Chat")
 #window.configure(bg="#ffffff")
