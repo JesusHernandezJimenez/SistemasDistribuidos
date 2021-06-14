@@ -1,0 +1,22 @@
+colores pincipales
+negro #EAEEEF
+fondo #1E262C
+python3 -m pip install PyMySQL
+ pip install pillow
+python3 -m venv venv
+venv/Scripts/activate
+deactivate esto es para salir
+
+https://docs.hektorprofe.net/python/interfaces-graficas-con-tkinter/widget-label-etiqueta-de-texto/
+https://guia-tkinter.readthedocs.io/es/develop/chapters/7-options/7.1-Intro.html
+https://guia-tkinter.readthedocs.io/es/develop/chapters/7-options/7.1-Intro.html
+por si las dudas
+https://toga.readthedocs.io/en/latest/how-to/contribute.html
+
+pyw con esa extension se ejecuta el programa
+https://docs.hektorprofe.net/python/interfaces-graficas-con-tkinter/widget-frame-marco/
+https://docs.hektorprofe.net/python/interfaces-graficas-con-tkinter/widget-label-etiqueta-de-texto/
+
+datos importantes
+frame.pack(fill="x")                # ancho como el padre
+frame.pack(fill="y")                # alto como el padre
