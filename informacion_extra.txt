@@ -1,12 +1,18 @@
+COLORS
 colores pincipales
 negro #EAEEEF
 fondo #1E262C
+azul bajo #D2EBFA
+
+INSTALAR BIBLIOTECAS Y MODULOS
 python3 -m pip install PyMySQL
- pip install pillow
+pip install pillow
 python3 -m venv venv
+
 venv/Scripts/activate
 deactivate esto es para salir
 
+INFORMACION GENERAL
 https://docs.hektorprofe.net/python/interfaces-graficas-con-tkinter/widget-label-etiqueta-de-texto/
 https://guia-tkinter.readthedocs.io/es/develop/chapters/7-options/7.1-Intro.html
 https://guia-tkinter.readthedocs.io/es/develop/chapters/7-options/7.1-Intro.html
