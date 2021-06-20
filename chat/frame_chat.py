@@ -24,10 +24,16 @@ class Frame_chat(Frame):
         msg_list = Listbox(self, height=11, width=38, font=("Arial Black", 13), fg="black", border=2,yscrollcommand=scrollbar.set).place(
             x=10, y = 32, width=700, height=400)
         e_mensaje = Entry(self, font=("Arial Black", 13), fg="black", width=65, textvariable=mensaje).place(
-            x=10, y= 420, width=720, height=30)
+            x=10, y= 435, width=580, height=30)
+        b_enviar = Button(self, text="Enviar", font="Fedora 12 bold", height=1, border=3,
+                                relief="groove", fg="#483659", command=self.send).place(
+            x=600, y= 435, width=580, height=30)
         #self.bind('<Key>',self.enter_event)
     def enter_event(self):
         print("Imprimiendo un enter pues")
+
+    def send(self):
+        pass
         """
         remitente = tkinter.StringVar()
         destinatario = tkinter.StringVar()
@@ -55,7 +61,6 @@ class Frame_chat(Frame):
         msg_list = tkinter.Listbox(window, height=11, width=38, font="Ubuntu 12 bold", fg="#483659", border=2,
                                 yscrollcommand=scrollbar.set)
 
-        #HASTA AQUI HE COPIADO EN EL CODIGO#############################
         e_remitente = tkinter.Entry(
             window, font="Fedora 12 bold", fg="#483659", textvariable=remitente)
         e_remitente.bind("<Return>", )
@@ -69,8 +74,10 @@ class Frame_chat(Frame):
                                 fg="#483659", width=65, textvariable=mensaje)
         e_mensaje.bind("<Return>", )
 
+        #HASTA AQUI HE COPIADO EN EL CODIGO#############################
         b_enviar_remitente = tkinter.Button(window, text="    Enviar    ", font="Fedora 12 bold", height=1, border=3,
                                             relief="groove", fg="#483659", command=set_name)
+        
         b_enviar = tkinter.Button(window, text="Enviar Mensaje", font="Fedora 12 bold", height=1, border=3,
                                 relief="groove", fg="#483659", command=send)
         b_salir = tkinter.Button(window, text="Salir", font="Fedora 12 bold", fg="red", border=3, relief='groove',
