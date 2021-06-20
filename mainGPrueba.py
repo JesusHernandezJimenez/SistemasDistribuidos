@@ -16,7 +16,8 @@ class App(Tk):
         self.container.pack(side="left", expand=True, fill="x")
         self.container.config(height=720, width=980)
         self.frame_m = Frame
-        self.frame_m = client2.Client2(self.container)
+        #self.frame_m = client2.Client2(self.container)
+        self.frame_m = frame_chat.Frame_chat(self.container)
 
         frame_botones.button_1 = Button(frame_botones, text="Boton1", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, 
         command= self.cambiar).place(x=0, y=0, width=300, height=35)

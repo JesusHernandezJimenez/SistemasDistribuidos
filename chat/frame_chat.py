@@ -1,7 +1,6 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from tkinter import *
-import tkinter
 from typing import Sized
 from PIL import ImageTk, Image
 
@@ -10,15 +9,25 @@ class Frame_chat(Frame):
         super().__init__(*args, ** kwargs)
         self.pack(side="left", expand=True, fill="both")
         self.config(height=720, width=980, bg="#D2EBFA")
-        label_1 = Label(self, text="Chat", font=("Arial Black", 20), bg="#D2EBFA",fg="black", anchor=NW).place(relx=0.02, y=0, width=300, height=35)
+        label_1 = Label(self, text="Chat", font=("Arial Black", 20), bg="#D2EBFA",fg="black", anchor=NW).place(
+            x=10, rely=0.01, width=300, height=35)
         #campo_conversacion = tkinter.Frame(window)
-        remitente = tkinter.StringVar()
-        destinatario = tkinter.StringVar()
-        asunto = tkinter.StringVar()
-        mensaje = tkinter.StringVar()
+        remitente = StringVar()
+        destinatario = StringVar()
+        asunto = StringVar()
+        mensaje = StringVar()
 
-        scrollbar = tkinter.Scrollbar(self)
-        scrollbar2 = tkinter.Scrollbar(self)
+        scrollbar = Scrollbar(self)
+        scrollbar2 = Scrollbar(self)
+        l_conversacion = Label(self, text=" Conversación", font=("Arial Black", 13), bg="#D2EBFA",anchor=NW).place(
+            x=10, y = 1, width=300, height=35)
+        msg_list = Listbox(self, height=11, width=38, font=("Arial Black", 13), fg="black", border=2,yscrollcommand=scrollbar.set).place(
+            x=10, y = 32, width=700, height=400)
+        e_mensaje = Entry(self, font=("Arial Black", 13), fg="black", width=65, textvariable=mensaje).place(
+            x=10, y= 420, width=720, height=30)
+        #self.bind('<Key>',self.enter_event)
+    def enter_event(self):
+        print("Imprimiendo un enter pues")
         """
         remitente = tkinter.StringVar()
         destinatario = tkinter.StringVar()
@@ -27,6 +36,7 @@ class Frame_chat(Frame):
 
         scrollbar = tkinter.Scrollbar(campo_conversacion)
         scrollbar2 = tkinter.Scrollbar(campo_conversacion)
+        
 
         #window.combo = ttk.Combobox(window)
         #window.combo.place(x=80, y=150)
@@ -45,6 +55,7 @@ class Frame_chat(Frame):
         msg_list = tkinter.Listbox(window, height=11, width=38, font="Ubuntu 12 bold", fg="#483659", border=2,
                                 yscrollcommand=scrollbar.set)
 
+        #HASTA AQUI HE COPIADO EN EL CODIGO#############################
         e_remitente = tkinter.Entry(
             window, font="Fedora 12 bold", fg="#483659", textvariable=remitente)
         e_remitente.bind("<Return>", )
