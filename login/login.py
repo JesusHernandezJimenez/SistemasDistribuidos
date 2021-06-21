@@ -46,7 +46,6 @@ class Login(Frame):
         for widgets in self.master.winfo_children():
             widgets.destroy()
         button_prueba = Button(self.master, text="Registro", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,command = self.volver_login).place(anchor='n', rely=0.9, relx=0.5, width=300, height=35)
-        print("que ohnda perro")
 
     def validar_datos(self,user):
         print(user)

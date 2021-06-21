@@ -1,6 +1,14 @@
 from tkinter import *
+from chat import client, client2, client3
 from login import registro, login
 from PIL import ImageTk, Image
+
+global Frame_2
+Frame_2 = client2.Client2
+global Frame_3
+Frame_3 = client3.Client3
+
+
 def delete():
     frame_login.forget()
     for widgets in frame_login.winfo_children():
@@ -34,9 +42,15 @@ def botton_2_cambiar():
     Frame_3.config(height=720, width=720, bg="#F08269")
 
 
+def cambiar_a_uno():
+    global Frame_2
+    global Frame_3
+    Frame_2 = client2.Client2(master=root)
+    print("cambiando de pantalla")
+def cambiar_a_dos():
+    Frame_3 = client3.Client3(master=root)
 def init():
-    print("JODER SI ENTRO ESTA PORQUERIA")
- 
+    print("iniciar Interfaz grafica")
     global Frame_1
     Frame_1 = Frame(root)
     global Frame_2
@@ -64,18 +78,25 @@ def init():
                       anchor=NW, command=botton_1_cambiar).place(x=0, y=0, width=300, height=35)
     button_2 = Button(Frame_1, text="Boton1", font=("Verdana", 12), bg="#1E262C", fg="white",
                       anchor=NW, command=botton_2_cambiar).place(x=0, y=34, width=300, height=35)
+###################################################################
 root = Tk()
 root.title("Proyecto")
 root.resizable(False, False)
 root.geometry("1280x720")
 root.config(bg="#EAEEEF")
+#pruebas con los frames
+"""
 Frame_1 = Frame(root)
 Frame_2 = Frame(root)
 Frame_3 = Frame(root)
+"""
+#Frame_1 = client.Client(master=root,cambiarUno=cambiar_a_uno,cambiarDos=cambiar_a_dos)
+#Frame_2 = client2.Client2(master=root)
+#Frame_3 = client3.Client3(master=root)
+#fin de ´prueba con los frames
 #INICIO DE LA INTERFAZ GRAFICA
-
 frame_login = login.Login(master=root, init=init, login_frame_validate = login_frame_validate)
+
 #frame_registro = registro.Registro(master=root)
 
 root.mainloop()
-

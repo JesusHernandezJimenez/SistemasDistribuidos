@@ -3,7 +3,7 @@ from threading import Thread
 from tkinter import *
 import tkinter
 from typing import Sized 
-
+from PIL import ImageTk, Image
 
 def recibir():
     # Se maneja la recepción de mensajes
@@ -70,8 +70,10 @@ principal.configure(bg='#eff2fe')
 window = Frame(principal, bg="white", width=500, height=300, bd=4,highlightbackground='black', highlightthickness=2)
 window.configure(bg='#eff2fe')
 #window.place(x=0, y=0)
-chat_btn = PhotoImage(file='Modulo Chat/img/chat2.png')
-chat_button = Button(principal, image=chat_btn, borderwidth=0, command=mostrarChat, bg='#eff2fe')
+
+chat_btn = PhotoImage(file='img/chat2.png')
+
+chat_button = Button(principal,image = chat_btn,borderwidth=0, command=mostrarChat, bg='#eff2fe')
 #window.place(x=510, y=280)
 #window.title("Chat")
 #window.configure(bg="#ffffff")
