@@ -24,38 +24,7 @@ class Login(Frame):
 
         button_ingresar = Button(Frame, text="Ingresar", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,
          command=lambda:  self.login_validate(entry_user_text.get(),entr_user_password.get(),login_frame_validate)).place(anchor='n', rely=0.7, relx=0.5, width=300, height=35)      
-        #button_ingresar = Button(Frame, text="Ingresar", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=lambda:  login_frame_validate(entry_user_text.get(),entr_user_password.get())).place(anchor='n', rely=0.7, relx=0.5, width=300, height=35)      
-        
-        #button_registro = Button(Frame, text="Crear cuenta", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=self.delete).place(anchor='n', rely=0.8, relx=0.5, width=300, height=35)
-        
-        #button_prueba = Button(Frame, text="prueba", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW, command=self.registro).place(anchor='n', rely=0.8, relx=0.5, width=300, height=35)
 
-    def login_validate(self,user,password,validate_frame):
-        if validate_frame(user,password) == True:
-            print("Validado, neta creeme")
-            for widgets in self.master.winfo_children():
-               widgets.destroy()
-            self.init()
-            
-    def create_login_images():
-        img_user = Image.open('proyecto/img/user.png')
-        #img_user = img_user.resize((60, 71), Image.ANTIALIAS)
-        return img_user
-    def registro(self):
-        #self.master.pack_forget()
-        for widgets in self.master.winfo_children():
-            widgets.destroy()
-        button_prueba = Button(self.master, text="Registro", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,command = self.volver_login).place(anchor='n', rely=0.9, relx=0.5, width=300, height=35)
-
-    def validar_datos(self,user):
-        print(user)
-    def joder(self,texto):
-        print(texto)
-    def volver_login(self):
-        #for widgets in self.master.winfo_children():
-        #   widgets.destroy()  
-        #self.master.pack_forget()
-        self.create_login(self.master)
 #Iniciar este frame
 """
 root = Tk()
