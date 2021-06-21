@@ -90,12 +90,12 @@ Frame_1 = Frame(root)
 Frame_2 = Frame(root)
 Frame_3 = Frame(root)
 """
-Frame_1 = client.Client(master=root,cambiarUno=cambiar_a_uno,cambiarDos=cambiar_a_dos)
+#Frame_1 = client.Client(master=root,cambiarUno=cambiar_a_uno,cambiarDos=cambiar_a_dos)
 #Frame_2 = client2.Client2(master=root)
 #Frame_3 = client3.Client3(master=root)
 #fin de ´prueba con los frames
 #INICIO DE LA INTERFAZ GRAFICA
-#frame_login = login.Login(master=root, init=init, login_frame_validate = login_frame_validate)
+frame_login = login.Login(master=root, init=init, login_frame_validate = login_frame_validate)
 
 #frame_registro = registro.Registro(master=root)
 
