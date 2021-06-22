@@ -10,7 +10,8 @@ class App(Tk):
         self.title("Proyecto")
         self.resizable(True, True)
         self.geometry("1280x720")
-        frame_login = login.Login(master=self, init=self.init, login_frame_validate=self.login_frame_validate)
+        self.init()
+        #frame_login = login.Login(master=self, init=self.init, validar_usuario=self.login_frame_validate)
     def cambiar(self):
         self.frame_m.destroy()
         self.frame_m = client2.Client2(self.container)

@@ -21,14 +21,54 @@ class Frame_chat(Frame):
         scrollbar2 = Scrollbar(self)
         l_conversacion = Label(self, text=" Conversación", font=("Arial Black", 13), bg="#D2EBFA",anchor=NW).place(
             x=10, y = 1, width=300, height=35)
-        msg_list = Listbox(self, height=11, width=38, font=("Arial Black", 13), fg="black", border=2,yscrollcommand=scrollbar.set).place(
-            x=10, y = 32, width=700, height=400)
+        msg_list = Listbox(self, height=11, width=38, font=("Arial Black", 13), fg="black", border=2,yscrollcommand=scrollbar.set)
+        msg_list.place(x=10, y = 32, width=700, height=400)
         e_mensaje = Entry(self, font=("Arial Black", 13), fg="black", width=65, textvariable=mensaje).place(
             x=10, y= 435, width=580, height=30)
         b_enviar = Button(self, text="Enviar", font="Fedora 12 bold", height=1, border=3,
                                 relief="groove", fg="#483659", command=self.send).place(
-            x=600, y= 435, width=580, height=30)
+            x=600, y= 435, width=110, height=30)
+
+
+        b_enviar = Button(self, text="Enviar mensaje privado", font="Fedora 12 bold", height=1, border=3,
+                        relief="groove", fg="#483659", command=self.send).place(
+            x=740, y=435, width=210, height=30)
+
+        """
+        langs = ('Java', 'C#', 'C', 'C++', 'Python',
+                'Go', 'JavaScript', 'PHP', 'Swift')
+
+        langs_var = StringVar(value=langs)
+        """
+
+        #FIN DE CHAT
+        #Lista de usuarios
+        self.my_listbox = Listbox(self, font=("Arial", 13), fg="#F44F01")
+        self.my_listbox.place(x=740, y=32, width=210, height=400)
+        #self.my_listbo
+        #self.my_listbox = Listbox(self)
+        #self.my_listbox.pack(pady=15)
+        
+        #Button
+        
+        #button_prueba = Button(self,text="Eliminar",command = self.delete_user_list).pack(pady=10)
+        #button_enviar = Button(self,text="Enviar mensaje privado",command = self.enviar_mensaje_privado_a).pack(pady=10)
+        
+        #Add user item
+        #self.my_listbox.insert(END,"Madara Uchicha")
+        #self.my_listbox.insert(END,"Sasuke Uchicha")
+        #Add list, una lista de elementos al combbo list
+        self.user_list = ["Naruto", "Kiba", "Sakura","Itachi","Kisame","Deidara","Sasori","Konan","Kakuzo","El Emo vengador tonificado"]
+        for item in self.user_list:
+            self.my_listbox.insert(END, item)
+
+    def delete_user_list(self):
+        self.my_listbox.delete(ANCHOR)
+        print("Desconectado")
         #self.bind('<Key>',self.enter_event)
+    def enviar_mensaje_privado_a(self):
+        print("Enviando mensaje a: "+ self.my_listbox.get(ANCHOR))
+
     def enter_event(self):
         print("Imprimiendo un enter pues")
 
