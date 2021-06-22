@@ -39,14 +39,10 @@ class App(Tk):
         self.container.config(height=720, width=980)
         self.frame_m = Frame
         self.frame_m = frame_chat.Frame_chat(self.container)
-        frame_botones.button_1 = Button(frame_botones, text="Boton1", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,
-                                        command=self.cambiar).place(x=0, y=0, width=300, height=35)
-        frame_botones.button_2 = Button(frame_botones, text="Boton2", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,
-                                        command=self.show).place(x=0, y=36, width=300, height=35)
-        frame_botones.button_2 = Button(frame_botones, text="Boton2", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,
-                                        command=self.show).place(x=0, y=72, width=300, height=35)
-        frame_botones.button_2 = Button(frame_botones, text="Chat", font=("Verdana", 12), bg="#1E262C", fg="white", anchor=NW,
-                                        command=self.chat).place(x=0, y=108, width=300, height=35)
+        frame_botones.button_1 = Button(frame_botones, text="Chat", font=("Verdana", 14), bg="#1E262C", fg="white", anchor=NW,command=self.chat).place(x=0, y=0, width=300, height=35)
+        frame_botones.button_2 = Button(frame_botones, text="Ayuda", font=("Verdana", 14), bg="#1E262C", fg="white", anchor=NW,command=self.show).place(x=0, y=36, width=300, height=35)
+        #frame_botones.button_2 = Button(frame_botones, text="Boton2", font=("Verdana", 14), bg="#1E262C", fg="white", anchor=NW,command=self.show).place(x=0, y=72, width=300, height=35)
+        #frame_botones.button_2 = Button(frame_botones, text="Boton3", font=("Verdana", 14), bg="#1E262C", fg="white", anchor=NW,command=self.cambiar).place(x=0, y=108, width=300, height=35)
 #Iniciar el programa principal
 root = App()
 root.mainloop()

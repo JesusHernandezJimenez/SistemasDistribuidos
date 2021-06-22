@@ -19,20 +19,13 @@ class Frame_chat(Frame):
 
         scrollbar = Scrollbar(self)
         scrollbar2 = Scrollbar(self)
-        l_conversacion = Label(self, text=" Conversación", font=("Arial Black", 13), bg="#D2EBFA",anchor=NW).place(
-            x=10, y = 1, width=300, height=35)
-        msg_list = Listbox(self, height=11, width=38, font=("Arial Black", 13), fg="black", border=2,yscrollcommand=scrollbar.set)
-        msg_list.place(x=10, y = 32, width=700, height=400)
-        e_mensaje = Entry(self, font=("Arial Black", 13), fg="black", width=65, textvariable=mensaje).place(
-            x=10, y= 435, width=580, height=30)
-        b_enviar = Button(self, text="Enviar", font="Fedora 12 bold", height=1, border=3,
-                                relief="groove", fg="#483659", command=self.send).place(
-            x=600, y= 435, width=110, height=30)
-
-
-        b_enviar = Button(self, text="Enviar mensaje privado", font="Fedora 12 bold", height=1, border=3,
-                        relief="groove", fg="#483659", command=self.send).place(
-            x=740, y=435, width=210, height=30)
+        l_conversacion = Label(self, text=" Conversación", font=("Arial Black", 13), bg="#D2EBFA",anchor=NW).place(x=10, y = 1, width=300, height=35)
+        self.msg_list = Listbox(self, height=11, width=38, font=("Arial Black", 13), fg="black", border=2,yscrollcommand=scrollbar.set)
+        self.msg_list.place(x=10, y=32, width=700, height=400)
+        self.e_mensaje = Entry(self, font=("Arial Black", 13), fg="black", width=65, textvariable=mensaje)
+        self.e_mensaje.place(x=10, y=435, width=580, height=30)
+        b_enviar_mensaje = Button(self, text="Enviar", font="Fedora 12 bold", height=1, border=3,relief="groove", fg="#483659", command=self.send_msg_general).place(x=600, y= 435, width=110, height=30)
+        b_enviar_mensaje_privado = Button(self, text="Enviar mensaje privado", font="Fedora 12 bold", height=1, border=3, relief="groove", fg="#483659", command=self.send_msg_private).place(x=740, y=435, width=210, height=30)
 
         """
         langs = ('Java', 'C#', 'C', 'C++', 'Python',
@@ -66,14 +59,17 @@ class Frame_chat(Frame):
         self.my_listbox.delete(ANCHOR)
         print("Desconectado")
         #self.bind('<Key>',self.enter_event)
-    def enviar_mensaje_privado_a(self):
+    def send_msg_private(self):
         print("Enviando mensaje a: "+ self.my_listbox.get(ANCHOR))
 
     def enter_event(self):
         print("Imprimiendo un enter pues")
 
-    def send(self):
-        pass
+    def send_msg_general(self):
+        print("Enviando mensaje a "+self.my_listbox.get(ANCHOR))
+        var = self.my_listbox.get(ANCHOR)
+        self.e_mensaje.insert(0,var)
+        self.e_mensaje.focus()
         """
         remitente = tkinter.StringVar()
         destinatario = tkinter.StringVar()
